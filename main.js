@@ -1,5 +1,5 @@
 var myApp =
-  "https://script.google.com/macros/s/AKfycbzY3U2AMydGhr2UQ9Q1IjlrvRSZZcMY-mkQiS3ftei8tRlMneei3TEfaJoG-pOAsmwM_A/exec";
+  "https://script.google.com/macros/s/AKfycbzorhO2peNZhjahXsw1GXtPE8L0F_bLHnMs12Sf5mTPTSpQO5Tk8nsO0Pze9npKdim88g/exec";
 var tasks = "1nZy_IhE22PwOqnyvSRlojmlaluxdrX7sPb2DQfvKKao";
 var sName = "Detailing NEMO";
 //var eDate = "Активно до: 18.08.2024";
