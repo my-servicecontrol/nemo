@@ -357,10 +357,45 @@ var autoNum = [],
   autoAllNum = [];
 function option() {
   var num = $("#num").val();
+  function convertToLatin(str) {
+    const cyrillicToLatinMap = {
+      А: "A",
+      В: "B",
+      Е: "E",
+      И: "I",
+      К: "K",
+      М: "M",
+      Н: "H",
+      О: "O",
+      Р: "P",
+      С: "C",
+      Т: "T",
+      У: "Y",
+      Х: "X",
+      а: "A",
+      в: "B",
+      е: "E",
+      и: "I",
+      к: "K",
+      м: "M",
+      н: "H",
+      о: "O",
+      р: "P",
+      с: "C",
+      т: "T",
+      у: "Y",
+      х: "X",
+    };
+    return str
+      .replace(/[А-Яа-я]/g, (char) => cyrillicToLatinMap[char] || char)
+      .toUpperCase();
+  }
+  num = convertToLatin(num);
   for (i = 0; i < autoNum.length; i++) {
     if (autoNum[i] == num) {
       var allNum = autoAllNum.filter((value) => value === num).length;
       $("#allnum").html(`${allNum + 1} -й визит`);
+      $("#num").val(autoNum[i]);
       $("#make").val(autoMake[i]);
       $("#model").val(autoModel[i]);
       $("#color").val(autoColor[i]);
