@@ -405,7 +405,7 @@ function option() {
     $("#allnum").html(`${allNum + 1} -й визит`);
   } else {
     var allmc = autoAllmc.filter((value) => value == model + client).length;
-    $("#allnum").html(`${allmc + 1} -й визит2`);
+    $("#allnum").html(`${allmc + 1} -й визит`);
   }
   for (i = 0; i < autoNum.length; i++) {
     if (autoNum[i] == num && client == "") {
