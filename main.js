@@ -1,5 +1,5 @@
 var myApp =
-  "https://script.google.com/macros/s/AKfycbzorhO2peNZhjahXsw1GXtPE8L0F_bLHnMs12Sf5mTPTSpQO5Tk8nsO0Pze9npKdim88g/exec";
+  "https://script.google.com/macros/s/AKfycbz2NVfS1XTayaGQurL_G-z7Yj0fNJlcH8psz-tNbDaqR3qgnZb-GI6Q-QFBQtirjreWLA/exec";
 var tasks = "1nZy_IhE22PwOqnyvSRlojmlaluxdrX7sPb2DQfvKKao";
 var sName = "Detailing NEMO";
 //var eDate = "Активно до: 18.08.2024";
@@ -177,7 +177,7 @@ function tasksTable(data) {
 var fil = [];
 function myFunction() {
   fil.length = 0;
-  var input, filter, table, tr, td, td1, td2, td3, td4, td5, td6, i;
+  var input, filter, table, tr, td, td1, td2, td3, td4, td5, td6, td7, i;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
   table = document.getElementById("myTable");
@@ -194,6 +194,7 @@ function myFunction() {
     td4 = tr[i].getElementsByTagName("td")[4];
     td5 = tr[i].getElementsByTagName("td")[5];
     td6 = tr[i].getElementsByTagName("td")[6];
+    td7 = tr[i].getElementsByTagName("td")[7];
     if (td) {
       if (
         td.innerHTML.toUpperCase().indexOf(filter) > -1 ||
@@ -202,7 +203,8 @@ function myFunction() {
         td3.innerHTML.toUpperCase().indexOf(filter) > -1 ||
         td4.innerHTML.toUpperCase().indexOf(filter) > -1 ||
         td5.innerHTML.toUpperCase().indexOf(filter) > -1 ||
-        td6.innerHTML.toUpperCase().indexOf(filter) > -1
+        td6.innerHTML.toUpperCase().indexOf(filter) > -1 ||
+        td7.innerHTML.toUpperCase().indexOf(filter) > -1
       ) {
         tr[i].style.display = "";
       } else {
@@ -222,10 +224,12 @@ function tasksModal(data) {
   autoClient.length = 0;
   autoPhone.length = 0;
   autoAllNum.length = 0;
+  autoAllmc.length = 0;
   for (var i = 0; i < data.Tf.length; i++) {
     var swap = 0;
     var str = data.Tf[i].c[13].v;
     autoAllNum.push(data.Tf[i].c[13].v);
+    autoAllmc.push(data.Tf[i].c[15].v + data.Tf[i].c[25].v);
     for (var j = i; j < data.Tf.length; j++) {
       if (data.Tf[j].c[13].v == str) {
         swap++;
@@ -354,9 +358,12 @@ var autoNum = [],
   autoMileage = [],
   autoClient = [],
   autoPhone = [],
-  autoAllNum = [];
+  autoAllNum = [],
+  autoAllmc = [];
 function option() {
   var num = $("#num").val();
+  var model = $("#model").val();
+  var client = $("#client").val();
   function convertToLatin(str) {
     const cyrillicToLatinMap = {
       А: "A",
@@ -391,11 +398,17 @@ function option() {
       .toUpperCase();
   }
   num = convertToLatin(num);
+  $("#num").val(num);
+
+  if (num != "") {
+    var allNum = autoAllNum.filter((value) => value === num).length;
+    $("#allnum").html(`${allNum + 1} -й визит`);
+  } else {
+    var allmc = autoAllmc.filter((value) => value == model + client).length;
+    $("#allnum").html(`${allmc + 1} -й визит2`);
+  }
   for (i = 0; i < autoNum.length; i++) {
-    if (autoNum[i] == num) {
-      var allNum = autoAllNum.filter((value) => value === num).length;
-      $("#allnum").html(`${allNum + 1} -й визит`);
-      $("#num").val(autoNum[i]);
+    if (autoNum[i] == num && client == "") {
       $("#make").val(autoMake[i]);
       $("#model").val(autoModel[i]);
       $("#color").val(autoColor[i]);
@@ -406,7 +419,6 @@ function option() {
       $("#phone").val(autoPhone[i]);
       break;
     }
-    $("#allnum").html(`1-й визит`);
   }
 }
 var tempMake = [],
@@ -499,7 +511,7 @@ function newOrder() {
 <div class="row">
 <div class="col-6">
 <label for="client" class="form-label">Клиент</label>
-<input id="client" name="client" class="form-control form-control-sm" type="text" value="" onchange="" list="character7">
+<input id="client" name="client" class="form-control form-control-sm" type="text" value="" onchange="option()" list="character7">
 <datalist id="character7">${opcClient}</datalist></div>
 <div class="col-6 ms-auto">
 <label for="phone" class="form-label">Тел. клиента</label>
@@ -556,7 +568,7 @@ var numCheck = ``;
 function addCheck() {
   var nomer = $("#num").val();
   var visitnum =
-    $("#allnum").text() == "" ? "1" : $("#allnum").text().match(/\d+/)[0];
+    $("#allnum").text() == "" ? "0" : $("#allnum").text().match(/\d+/)[0];
   var record = $("#datetime-local").val();
   var make = $("#make").val() == "?" ? "" : $("#make").val();
   var model = $("#model").val() == "?" ? "" : $("#model").val();
