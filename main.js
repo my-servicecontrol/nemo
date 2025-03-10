@@ -1,7 +1,7 @@
 var myApp =
-  "https://script.google.com/macros/s/AKfycbyTM8gtmac83_Xm1z-MbbRdneC-WaNDp41g-XkCNq1FpGQy8TcyvBK3wCNW8TC-o8bq/exec";
-var tasks = "1oBRqIxKSX7ry35lTLNeo9dBffXT7-VyaRSASag7_ffc";
-var sName = "Lemonade Detailing";
+  "https://script.google.com/macros/s/AKfycbx7ZmeDCrGqyiv5fJBdkVQVsw52OP5V54KGM33BgUUGCcKtb4ozwiKQ5VDXnzA27g9F5g/exec";
+var tasks = "1nZy_IhE22PwOqnyvSRlojmlaluxdrX7sPb2DQfvKKao";
+var sName = "Detailing NEMO";
 //var eDate = "Активно до: 18.08.2024";
 $("#offcanvasNavbarLabel").html(sName);
 //$("#dateend").html(eDate);
