@@ -1,7 +1,7 @@
 var myApp =
-  "https://script.google.com/macros/s/AKfycbz2NVfS1XTayaGQurL_G-z7Yj0fNJlcH8psz-tNbDaqR3qgnZb-GI6Q-QFBQtirjreWLA/exec";
-var tasks = "1nZy_IhE22PwOqnyvSRlojmlaluxdrX7sPb2DQfvKKao";
-var sName = "Detailing NEMO";
+  "https://script.google.com/macros/s/AKfycbyTM8gtmac83_Xm1z-MbbRdneC-WaNDp41g-XkCNq1FpGQy8TcyvBK3wCNW8TC-o8bq/exec";
+var tasks = "1oBRqIxKSX7ry35lTLNeo9dBffXT7-VyaRSASag7_ffc";
+var sName = "Lemonade Detailing";
 //var eDate = "Активно до: 18.08.2024";
 $("#offcanvasNavbarLabel").html(sName);
 //$("#dateend").html(eDate);
@@ -455,9 +455,9 @@ function newOrder() {
   const vMonth = currentTime.format("MM");
   const vDay = currentTime.format("DD");
 
-  var title = `Создаем новый визит в сервис`;
-  var buttons = `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
-            	   <button type="button" class="btn btn-success" onclick="addCheck()">Создать</button>`;
+  var title = `Створюємо новий візит до сервісу`;
+  var buttons = `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+            	   <button type="button" class="btn btn-success" onclick="addCheck()">Створити</button>`;
   $("#commonModal .modal-header .modal-title").html(title);
   $("#commonModal .modal-body").html(function () {
     return `<div class="row">
@@ -467,16 +467,16 @@ function newOrder() {
     <div class="row">
     <div class="col-6">
     <form class="form-floating">
-    <input class="form-control" id="num" placeholder="Гос. номер авто" value="" onchange="option()" list="character">
-    <label for="num">Гос. номер авто</label>
+    <input class="form-control" id="num" placeholder="Держ. номер авто" value="" onchange="option()" list="character">
+    <label for="num">Держ. номер авто</label>
     </form>
     <datalist id="character">${opcNum}</datalist>
     </div>
     
     <div class="col-6 ms-auto">
     <form class="form-floating">
-    <input type="datetime-local" id="datetime-local" class="form-control" placeholder="Время визита" min="${vYear}-${vMonth}-${vDay} ${vHour}:${vMinutes}" value="${vYear}-${vMonth}-${vDay} ${vHour}:${vMinutes}" onchange="">
-    <label for="datetime-local" class="form-label">Время визита</label>
+    <input type="datetime-local" id="datetime-local" class="form-control" placeholder="Час візиту" min="${vYear}-${vMonth}-${vDay} ${vHour}:${vMinutes}" value="${vYear}-${vMonth}-${vDay} ${vHour}:${vMinutes}" onchange="">
+    <label for="datetime-local" class="form-label">Час візиту</label>
     </form>
     </div>
     </div>
@@ -492,11 +492,11 @@ function newOrder() {
 </div>
 <div class="row text-bg-light">
 <div class="col-6">
-<label for="color" class="form-label">Цвет</label>
+<label for="color" class="form-label">Колір</label>
 <input id="color" name="color" class="form-control form-control-sm" type="text" value="" onchange="" list="character3">
 <datalist id="character3">${opcColor}</datalist></div>
 <div class="col-6 ms-auto">
-<label for="year" class="form-label">Год</label>
+<label for="year" class="form-label">Рік</label>
 <input id="year" name="year" class="form-control form-control-sm" type="text" value="" onchange="" list="character4">
 <datalist id="character4">${opcYear}</datalist></div></div>
 <div class="row text-bg-light p-2">
@@ -505,16 +505,16 @@ function newOrder() {
 <input id="vin" name="vin" class="form-control form-control-sm" type="text" value="" onchange="" list="character5">
 <datalist id="character5"></datalist></div>
 <div class="col-6 ms-auto">
-<label for="mileage" class="form-label">Пробег</label>
+<label for="mileage" class="form-label">Пробіг</label>
 <input id="mileage" name="mileage" class="form-control form-control-sm" type="text" value="" onchange="" list="character6">
 <datalist id="character6"></datalist></div></div>
 <div class="row">
 <div class="col-6">
-<label for="client" class="form-label">Клиент</label>
+<label for="client" class="form-label">Клієнт</label>
 <input id="client" name="client" class="form-control form-control-sm" type="text" value="" onchange="option()" list="character7">
 <datalist id="character7">${opcClient}</datalist></div>
 <div class="col-6 ms-auto">
-<label for="phone" class="form-label">Тел. клиента</label>
+<label for="phone" class="form-label">Тел. Клієнта</label>
 <input id="phone" name="phone" class="form-control form-control-sm" type="text" value="" onchange="" list="character8">
 <datalist id="character8"></datalist></div></div>`;
   });
@@ -524,8 +524,8 @@ function newOrder() {
 
 function editOrder(dadata) {
   var title = `<div class="row fs-6 fst-italic text-nowrap"><div class="col-2">${dadata[3].v}</div><div class="col-6 text-end">${sName}</div><div class="col-4">${dadata[0].f} - ${dadata[1].f}</div></div>`;
-  var buttons = `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
-               <button type="button" class="btn btn-success" onclick="" disabled>Отправить</button>`;
+  var buttons = `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+               <button type="button" class="btn btn-success" onclick="" disabled>Надіслати</button>`;
   $("#commonModal .modal-header .modal-title").html(title);
   $("#commonModal .modal-body").html(function () {
     return `<div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
@@ -540,7 +540,7 @@ function editOrder(dadata) {
   <div><p style="text-align: right;">%<strong> &nbsp; &nbsp; &nbsp; ${dadata[30].v}: &nbsp; &nbsp; &nbsp; ${dadata[29].v} грн.&nbsp; &nbsp;</strong></p></div>`;
   });
 
-  const data = dadata[36].v == undefined ? "заказ пуст" : dadata[36].v;
+  const data = dadata[36].v == undefined ? "немає замовлення" : dadata[36].v;
   const rows = data.split(",");
   const tableBody = document.getElementById("table-body");
 
@@ -616,13 +616,13 @@ function addCheck() {
 
 function addReportModal() {
   var title = `Створюємо звіт`;
-  var buttons = `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
-            	   <button type="button" class="btn btn-success" onclick="addReport()">Создать</button>`;
+  var buttons = `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+            	   <button type="button" class="btn btn-success" onclick="addReport()">Створити</button>`;
   $("#commonReport .modal-header .modal-title").html(title);
   $("#commonReport .modal-body").html(function () {
     return `<label for="typeReport" class="form-label">Тип звіту</label>
 <select id="typeReport" name="typeReport" class="form-select" type="text" value="" onchange="addInputClient()" list="characterR">
-<option selected>За виконаними замовленнями</option><option>За проданими товарами</option><option>По клієнту</option></select>
+<option selected>За виконаними замовленнями</option><option>Фінансовий (основний)</option><option>За проданими товарами</option><option>По клієнту</option></select>
 <br><div id="addInput"></div><br>
 <div class="row"><div class="col">
 <label for="sdate" class="form-label">Дата початку</label>
@@ -654,6 +654,9 @@ function addReport() {
   action.length = 0;
   if (typeReport == "За виконаними замовленнями") {
     action.push("reportVal");
+  }
+  if (typeReport == "Фінансовий (основний)") {
+    action.push("reportFin");
   }
   if (typeReport == "За проданими товарами") {
     action.push("reportGoods");
