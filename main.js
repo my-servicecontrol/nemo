@@ -448,13 +448,6 @@ var opcNum = [],
   opcYear = [],
   opcClient = [];
 function newOrder() {
-  const currentTime = moment().tz("Europe/Kiev");
-  const vHour = currentTime.format("HH");
-  const vMinutes = currentTime.format("mm");
-  const vYear = currentTime.format("YYYY");
-  const vMonth = currentTime.format("MM");
-  const vDay = currentTime.format("DD");
-
   var title = `Створюємо новий візит до сервісу`;
   var buttons = `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
             	   <button type="button" class="btn btn-success" onclick="addCheck()">Створити</button>`;
@@ -475,7 +468,7 @@ function newOrder() {
     
     <div class="col-6 ms-auto">
     <form class="form-floating">
-    <input type="datetime-local" id="datetime-local" class="form-control" placeholder="Час візиту" min="${vYear}-${vMonth}-${vDay} ${vHour}:${vMinutes}" value="${vYear}-${vMonth}-${vDay} ${vHour}:${vMinutes}" onchange="">
+    <input type="datetime-local" id="datetime-local" class="form-control" placeholder="Час візиту" min="" value="" onchange="">
     <label for="datetime-local" class="form-label">Час візиту</label>
     </form>
     </div>
