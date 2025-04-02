@@ -1,8 +1,28 @@
 var myApp =
-  "https://script.google.com/macros/s/AKfycbx7ZmeDCrGqyiv5fJBdkVQVsw52OP5V54KGM33BgUUGCcKtb4ozwiKQ5VDXnzA27g9F5g/exec";
+  "https://script.google.com/macros/s/AKfycbxOnFRbjeTf1Px-E_sA2I3ecrk8Cv3nmBTJAeBBARGNySBSDskO0QGKWavYznAm5GkOvg/exec";
+var price =
+  "https://docs.google.com/spreadsheets/d/1XTkQof-hSlfFLDZNLOYldBDAt14X6IJpsqiKKJU2__I/edit?gid=0#gid=0";
 var tasks = "1nZy_IhE22PwOqnyvSRlojmlaluxdrX7sPb2DQfvKKao";
 var sName = "Detailing NEMO";
+let users = [
+  "Alyona.kovalyova.fly@gmail.com",
+  "Chezganovalusya@gmail.com",
+  "detailingnemo@gmail.com",
+  "Georgiskelli@gmail.com",
+  "kovalenko1988u@gmail.com",
+  "Taisiyar.nemo@gmail.com",
+];
+let usersDiv = document.getElementById("users-email");
+users.forEach((email) => {
+  let link = document.createElement("a");
+  link.href = `mailto:${email}`;
+  link.textContent = email;
+  link.style.display = "block";
+  usersDiv.appendChild(link);
+});
+
 //var eDate = "Активно до: 18.08.2024";
+document.getElementById("price-link").href = price;
 $("#offcanvasNavbarLabel").html(sName);
 //$("#dateend").html(eDate);
 $(document).ready(function () {
@@ -448,6 +468,13 @@ var opcNum = [],
   opcYear = [],
   opcClient = [];
 function newOrder() {
+  const currentTime = moment().tz("Europe/Kiev");
+  const vHour = currentTime.format("HH");
+  const vMinutes = currentTime.format("mm");
+  const vYear = currentTime.format("YYYY");
+  const vMonth = currentTime.format("MM");
+  const vDay = currentTime.format("DD");
+
   var title = `Створюємо новий візит до сервісу`;
   var buttons = `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
             	   <button type="button" class="btn btn-success" onclick="addCheck()">Створити</button>`;
@@ -468,7 +495,7 @@ function newOrder() {
     
     <div class="col-6 ms-auto">
     <form class="form-floating">
-    <input type="datetime-local" id="datetime-local" class="form-control" placeholder="Час візиту" min="" value="" onchange="">
+    <input type="datetime-local" id="datetime-local" class="form-control" placeholder="Час візиту" min="${vYear}-${vMonth}-${vDay} ${vHour}:${vMinutes}" value="${vYear}-${vMonth}-${vDay} ${vHour}:${vMinutes}" onchange="">
     <label for="datetime-local" class="form-label">Час візиту</label>
     </form>
     </div>
@@ -615,7 +642,7 @@ function addReportModal() {
   $("#commonReport .modal-body").html(function () {
     return `<label for="typeReport" class="form-label">Тип звіту</label>
 <select id="typeReport" name="typeReport" class="form-select" type="text" value="" onchange="addInputClient()" list="characterR">
-<option selected>За виконаними замовленнями</option><option>Фінансовий (основний)</option><option>За проданими товарами</option><option>По клієнту</option></select>
+<option selected>За виконаними замовленнями</option><option>Фінансовий (основний)</option><option>Популярні послуги</option><option>За проданими товарами</option><option>По клієнту</option></select>
 <br><div id="addInput"></div><br>
 <div class="row"><div class="col">
 <label for="sdate" class="form-label">Дата початку</label>
@@ -650,6 +677,9 @@ function addReport() {
   }
   if (typeReport == "Фінансовий (основний)") {
     action.push("reportFin");
+  }
+  if (typeReport == "Популярні послуги") {
+    action.push("reportServices");
   }
   if (typeReport == "За проданими товарами") {
     action.push("reportGoods");
