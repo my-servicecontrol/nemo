@@ -561,7 +561,7 @@ function editOrder(dadata) {
   });
 
   const data = dadata[36].v == undefined ? "немає замовлення" : dadata[36].v;
-  const rows = data.split(",");
+  const rows = data.split("--");
   const tableBody = document.getElementById("table-body");
 
   rows.forEach((row, index) => {
