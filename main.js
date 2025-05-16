@@ -1,5 +1,5 @@
 var myApp =
-  "https://script.google.com/macros/s/AKfycbzVWFq_lJnfWtcKGUwZrWTOKXaZzkJtIo4LTgqxg3ca9ncmvwSIknBdtdlxJZx-QcAXEA/exec";
+  "https://script.google.com/macros/s/AKfycbzSmf8H8AbzmuyU-Qu1LeWRsdgDkTuIuTElCsRLRCIXZF9c-PTDDdCuMmOH7CKz3LfGvw/exec";
 var price =
   "https://docs.google.com/spreadsheets/d/1XTkQof-hSlfFLDZNLOYldBDAt14X6IJpsqiKKJU2__I/edit?gid=0#gid=0";
 var tasks = "1nZy_IhE22PwOqnyvSRlojmlaluxdrX7sPb2DQfvKKao";
@@ -642,7 +642,7 @@ function addReportModal() {
   $("#commonReport .modal-body").html(function () {
     return `<label for="typeReport" class="form-label">Тип звіту</label>
 <select id="typeReport" name="typeReport" class="form-select" type="text" value="" onchange="addInputClient()" list="characterR">
-<option selected>За виконаними замовленнями</option><option>Фінансовий (основний)</option><option>Популярні продажі</option><option>За проданими товарами</option><option>По клієнту</option></select>
+<option selected>За виконаними замовленнями</option><option>Фінансовий (основний)</option><option>Популярні продажі</option><option>По клієнту</option></select>
 <br><div id="addInput"></div><br>
 <div class="row"><div class="col">
 <label for="sdate" class="form-label">Дата початку</label>
@@ -681,9 +681,9 @@ function addReport() {
   if (typeReport == "Популярні продажі") {
     action.push("reportServices");
   }
-  if (typeReport == "За проданими товарами") {
+  /*if (typeReport == "За проданими товарами") {
     action.push("reportGoods");
-  }
+  }*/
   if (typeReport == "По клієнту") {
     action.push("reportClient");
   }
