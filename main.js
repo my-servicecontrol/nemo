@@ -1,5 +1,5 @@
 var myApp =
-  "https://script.google.com/macros/s/AKfycbxaPYKONb3nCEPWDigX1sP9vl930p4VP39RJSNxXcb6lE86ZJmGo-Eyni1asg71fUZSwQ/exec";
+  "https://script.google.com/macros/s/AKfycby9Aupsfiag1LRM_WQXWa2qfHfSfR94DcOavTVuSWfIASVdXIHlJ4o9SGYBr6OuFWfDvA/exec";
 var price =
   "https://docs.google.com/spreadsheets/d/1XTkQof-hSlfFLDZNLOYldBDAt14X6IJpsqiKKJU2__I/edit?gid=0#gid=0";
 var tasks = "1nZy_IhE22PwOqnyvSRlojmlaluxdrX7sPb2DQfvKKao";
